@@ -1,0 +1,15 @@
+{
+  "name": "onoue-lab-2020",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "arayaryoma <r1o.ryoma.abe@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "fusuma start",
+    "build": "fusuma build",
+    "deploy": "fusuma deploy"
+  },
+  "devDependencies": {
+    "fusuma": "^2.0.0-alpha.18"
+  }
+}

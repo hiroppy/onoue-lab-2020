@@ -1,0 +1,154 @@
+import { Figure } from "./figure";
+
+<!-- classes: title content-left -->
+
+# 知らないと卒業できない HTTP の話
+
+araya @arayaryoma
+
+2021-01-25
+
+---
+
+<!-- classes: title content-left -->
+
+## 自己紹介
+
+![](https://araya.dev/assets/purple-cat.png)
+
+araya
+
+- Twitter: [@arayaryoma](https://twitter.com/arayaryoma)
+- GitHub: [@arayaryoma](https://github.com/arayaryoma)
+- 職業: 報道・出版系の会社で Web エンジニア
+
+---
+
+<!-- classes: title content-left -->
+
+## なんで来たの？
+
+視聴だけするつもりだったけど召喚されました。 😈🔯
+
+5 分で HTTP とは何かみたいな話をします。
+
+卒業と関係するかどうかは尾上さんに聞いてください(多分しない)。
+
+<Figure
+  src="../images/discord-ss.png"
+  caption={"ゆるゆるな発表者登録のシステム"}
+/>
+
+---
+
+<!-- classes: content-left -->
+
+## HTTP って？
+
+Hyper Text Transfer Protocol。 Web におけるクライアント-サーバー間のリクエスト/レスポンスのやり取りで主に用いられる**通信プロトコル**。
+
+### プロトコル(Protocol)
+
+やりとりを行う者たちが確実に必要な手続きを行うための、手順や方法の**規約**
+
+HTTP があるおかげで、
+
+- サーバーはクライアントが何を要求してるか知ることができ
+- クライアントはサーバーから送られてきたデータを理解することができる
+
+<Figure
+  src={require("../images/1.png")}
+  caption={"HTTPでのリソースのやり取り"}
+/>
+
+---
+
+<!-- classes: content-left -->
+
+## プロトコルのスタック
+
+- コンピューター同士の通信は最終的には電気信号など、物理的に通信相手に伝えるられるものになる。
+- コンピューターではもちろん HTTP 以外の通信プロトコルも扱える。
+- プロトコルは階層構造を持つ。
+- 送信者はデータをプロトコルで決められたルールで作り、それを更に低い階層で繰り返していく。
+- 受信者はその逆に、プロトコルで決められたルールでデータを取り出していく。
+- 「**OSI 参照モデル**」 で調べてね！
+
+<Figure src={require("../images/3.png")} caption={"プロトコルの階層構造の例"} />
+
+---
+
+<!-- classes: title content-left -->
+
+## プロトコルがないと...
+
+サーバーはクライアントからなにかデータが送られてきても、それがどういう意味を持つのか理解ができない。
+
+もっと低いレイヤーでみると、何らかしらの信号が送られてきてもそれが何であるか理解ができない。
+
+<Figure
+  src={require("../images/2.png")}
+  caption={"プロトコルがないとクライアントとサーバーは会話ができない"}
+/>
+
+---
+
+<!-- classes: title content-left -->
+
+## HTTP の仕様は誰が決めている？
+
+**IETF (Internet Engineering Task Force)**
+
+- HTTP や TCP など、インターネットに関する様々な技術の標準化に取り組む団体
+- 新しいプロトコルがでるとまずは Draft という形で公開される
+- 設計上の問題点の解消や、必要な議論やレビュー、実装が一通りまとまると**RFC(Request For Comments)**という形で公開される
+  - 例: RFC7230(HTTP/1.1), RFC7231(HTTP Semantics and Content), RFC7540(HTTP/2)
+  - HTTP に関連する RFC がまとまっているページ: https://httpwg.org/specs/
+- 一度出た RFC が同じ番号のまま更新されることはない。
+- RFC に問題があり更新の必要があるときは新しい(別の番号が振られた) RFC として公開される。(たとえ 1 文字の typo 修正であろうと)
+
+---
+
+<!-- classes: title content-left -->
+
+## HTTP も改善が続けられている
+
+- HTTP/0.9
+  - HTTP の最初のバージョン。1.0 が出たとことで相対的に 0.9 と呼ばれるようになった。
+- HTTP/1.0
+  - 1996 年 [RFC1945](https://tools.ietf.org/html/rfc1945)
+- **HTTP/1.1**
+  - 1997 年[RFC2068](https://tools.ietf.org/html/rfc2068)
+  - 最新の RFC は 2014 年 [RFC7235](https://tools.ietf.org/html/rfc7235)
+- **HTTP/2**
+  - 2015 年 [RFC7540](https://tools.ietf.org/html/rfc7540)
+- **HTTP/3 (over QUIC)**
+  - 2021 年 1 月 25 日現在は[Draft](https://tools.ietf.org/html/draft-ietf-quic-http-33)
+  - もうすぐ RFC 📣
+- **HTTPS (over TLS)**
+  - 2000 年 [RFC2818](https://tools.ietf.org/html/rfc2818)
+  - TLS の上で HTTP を使うことにより通信内容の盗聴や改ざんを防止
+
+---
+
+<!-- classes: title content-left -->
+
+## HTTP? HTTPS?
+
+- TLS という暗号化の仕組みをつかうことによって、HTTP で送受信されるデータは通信経路上で暗号化されている。
+  - "SSL" は TLS の昔の名称。SSL のバージョンアップを続けるうち、TLS という名称に変更になった。
+- 第三者による**盗聴**や**改ざん**を防止することができる。
+- **閲覧している Web サイトそのものの安全性、Web サイト提供者の信頼性を担保するものではない**
+
+---
+
+<!-- content-left -->
+
+## HTTP 上でやり取りされるデータ
+
+- 仕様で決められたフォーマットに乗っ取り、status, header, body を送信する
+- https://example.com をブラウザで開き、開発者ツールのネットワークツールをみると、シンプルなサイトでも意外に多くの Request header / Response header が送られきていることが分かる。
+
+  - 🐼「全部説明できますか？」(発表者の空想でありフィクション)
+
+<Figure src={require("../images/network-inspector.png")} width="50%" />
