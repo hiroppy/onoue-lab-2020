@@ -24,4 +24,3 @@ extends:
 build:
   ssr: true
   useCache: true
-  publicPath: /
