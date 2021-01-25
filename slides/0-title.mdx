@@ -49,7 +49,7 @@ Hyper Text Transfer Protocol。 Web におけるクライアント-サーバー�
 
 ### プロトコル(Protocol)
 
-やりとりを行う者たちが確実に必要な手続きを行うための、手順や方法の**規約**
+やりとりを行うもの同士が確実に必要な手続きを行うための、手順や方法の**規約**
 
 HTTP があるおかげで、
 
@@ -73,8 +73,12 @@ HTTP があるおかげで、
 - 送信者はデータをプロトコルで決められたルールで作り、それを更に低い階層で繰り返していく。
 - 受信者はその逆に、プロトコルで決められたルールでデータを取り出していく。
 - 「**OSI 参照モデル**」 で調べてね！
+  - 🪓🐼「聞いたことがないはずがない」(半分発表者の空想でありフィクション)
 
-<Figure src={require("../images/3.png")} caption={"プロトコルの階層構造の例"} />
+<Figure
+  src={require("../images/3.png")}
+  caption={"プロトコルの階層構造のイメージ"}
+/>
 
 ---
 
@@ -127,7 +131,7 @@ HTTP があるおかげで、
   - もうすぐ RFC 📣
 - **HTTPS (over TLS)**
   - 2000 年 [RFC2818](https://tools.ietf.org/html/rfc2818)
-  - TLS の上で HTTP を使うことにより通信内容の盗聴や改ざんを防止
+  - TLS の上で HTTP を使うことにより通信を Secure に
 
 ---
 
@@ -137,12 +141,26 @@ HTTP があるおかげで、
 
 - TLS という暗号化の仕組みをつかうことによって、HTTP で送受信されるデータは通信経路上で暗号化されている。
   - "SSL" は TLS の昔の名称。SSL のバージョンアップを続けるうち、TLS という名称に変更になった。
-- 第三者による**盗聴**や**改ざん**を防止することができる。
+- 第三者による**内容の盗聴**や**改ざんされた情報の受信**を防止することができる。
 - **閲覧している Web サイトそのものの安全性、Web サイト提供者の信頼性を担保するものではない**
+
+<div style={{display: 'flex'}}>
+<Figure
+  src={require("../images/https.png")}
+  caption={"暗号化なしでの通信"}
+  width="50%"
+/>
+
+<Figure
+  src={require("../images/https-2.png")}
+  caption={"暗号化ありでの通信"}
+  width="50%"
+/>
+</div>
 
 ---
 
-<!-- content-left -->
+<!-- classes: content-left -->
 
 ## HTTP 上でやり取りされるデータ
 
@@ -152,3 +170,23 @@ HTTP があるおかげで、
   - 🐼「全部説明できますか？」(発表者の空想でありフィクション)
 
 <Figure src={require("../images/network-inspector.png")} width="50%" />
+
+---
+
+<!-- classes: content-left -->
+
+## HTTP への興味が湧いたら
+
+- 個人的にまずおすすめしたい読み物はこれ
+  - Real World HTTP 第 2 版 ―歴史とコードに学ぶインターネットとウェブ技術 [htps://www.amazon.co.jp/dp/4873119030/](htps://www.amazon.co.jp/dp/4873119030/)
+- その次は RFC を読んでみよう！
+  - HTTP 関連の RFC まとめ: https://httpwg.org/specs/
+  - 日本語訳(非公式): https://triple-underscore.github.io/http-common-ja.html
+
+---
+
+## おわり
+
+ありがとうございました。
+
+@arayaryoma は皆様の楽しい学生生活と無事の修了を応援しています 👏
