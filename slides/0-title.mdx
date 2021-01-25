@@ -1,6 +1,6 @@
 import { Figure } from "./figure";
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 # 知らないと卒業できない HTTP の話
 
@@ -10,7 +10,7 @@ araya @arayaryoma
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## 自己紹介
 
@@ -24,7 +24,7 @@ araya
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## なんで来たの？
 
@@ -39,9 +39,11 @@ araya
   caption={"ゆるゆるな発表者登録のシステム"}
 />
 
+特に物は作ってないので講義っぽくなっちゃった。ごめんなさい。
+
 ---
 
-<!-- classes: content-left -->
+<!-- classes: flex-left -->
 
 ## HTTP って？
 
@@ -59,11 +61,13 @@ HTTP があるおかげで、
 <Figure
   src={require("../images/1.png")}
   caption={"HTTPでのリソースのやり取り"}
+  width="50%"
+  position="center"
 />
 
 ---
 
-<!-- classes: content-left -->
+<!-- classes: flex-left -->
 
 ## プロトコルのスタック
 
@@ -78,11 +82,13 @@ HTTP があるおかげで、
 <Figure
   src={require("../images/3.png")}
   caption={"プロトコルの階層構造のイメージ"}
+  width="50%"
+  position="center"
 />
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## プロトコルがないと...
 
@@ -93,11 +99,13 @@ HTTP があるおかげで、
 <Figure
   src={require("../images/2.png")}
   caption={"プロトコルがないとクライアントとサーバーは会話ができない"}
+  width="50%"
+  position="center"
 />
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## HTTP の仕様は誰が決めている？
 
@@ -113,7 +121,7 @@ HTTP があるおかげで、
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## HTTP も改善が続けられている
 
@@ -135,7 +143,7 @@ HTTP があるおかげで、
 
 ---
 
-<!-- classes: title content-left -->
+<!-- classes: title flex-left -->
 
 ## HTTP? HTTPS?
 
@@ -160,28 +168,33 @@ HTTP があるおかげで、
 
 ---
 
-<!-- classes: content-left -->
+<!-- classes: flex-left -->
 
 ## HTTP 上でやり取りされるデータ
 
 - 仕様で決められたフォーマットに乗っ取り、status, header, body を送信する
 - https://example.com をブラウザで開き、開発者ツールのネットワークツールをみると、シンプルなサイトでも意外に多くの Request header / Response header が送られきていることが分かる。
 
-  - 🐼「全部説明できますか？」(発表者の空想でありフィクション)
+  - 🪓🐼「全部説明できますか？」(発表者の空想でありフィクション)
 
 <Figure src={require("../images/network-inspector.png")} width="50%" />
 
 ---
 
-<!-- classes: content-left -->
+<!-- classes: flex-left -->
 
 ## HTTP への興味が湧いたら
 
 - 個人的にまずおすすめしたい読み物はこれ
-  - Real World HTTP 第 2 版 ―歴史とコードに学ぶインターネットとウェブ技術 [htps://www.amazon.co.jp/dp/4873119030/](htps://www.amazon.co.jp/dp/4873119030/)
+  - Real World HTTP 第 2 版 ―歴史とコードに学ぶインターネットとウェブ技術 [https://www.amazon.co.jp/dp/4873119030/](https://www.amazon.co.jp/dp/4873119030/)
 - その次は RFC を読んでみよう！
+
   - HTTP 関連の RFC まとめ: https://httpwg.org/specs/
   - 日本語訳(非公式): https://triple-underscore.github.io/http-common-ja.html
+    <div style={{ display: "flex" }}>
+      <Figure src="https://images-na.ssl-images-amazon.com/images/I/410dLLOwxaL._SX389_BO1,204,203,200_.jpg" />
+      <Figure src={require("../images/http-rfc.png")} width="480px" />
+    </div>
 
 ---
 

@@ -59,3 +59,9 @@ figcaption {
   margin-top: 1em;
   text-align: center;
 }
+
+.flex-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
